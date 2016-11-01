@@ -1,0 +1,19 @@
+# Ejemplo
+jc69120:
+  NOMBRE: 6” x 9” Cuatriaxial 
+  IMAGEN: jc69120.png
+  CODIGO-INTERNO: jhr5152
+  TIPO: Parlante para automovil
+  LINEA: 
+    - Roja:
+       - Woofers
+  ETIQUETAS: [triaxial,6x9”,alta potencia]
+  DESCRIPCION: | 
+   Alta Potencia
+   Potencia: 120W RMS
+   Peso Imán: 20 Oz.
+   Fo: 40 Hz. | Resp. en Frecuencia.: 40-20000 Hz.
+   SPL: 94 dB/1W/1m
+   Impedancia: 4 ohms
+  PRESENTACION: Caja cerrada contiene 4 unidades
+
