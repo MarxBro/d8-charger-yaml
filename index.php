@@ -14,11 +14,13 @@ use Drupal\file\Entity\File;
 
 
 $archivos_ruta = 'yamls/';
-$archivos_yaml = scandir($archivos_ruta);
+//$archivos_yaml = scandir($archivos_ruta);
+$archivos_yaml = file_scan_directory($archivos_ruta, '/[.*.y.?ml]$/');
 
 foreach ($archivos_yaml as $y){
-    if (preg_match('/\.y.?ml$/',$y)){
-        $Coso = spyc_load_file($archivos_ruta . $y);
+    //if (preg_match('/\.y.?ml$/',$y)){
+    //$Coso = spyc_load_file($archivos_ruta . $y);
+        $Coso = spyc_load_file($y->uri);
         if ($debug){
             print "<span>" . $y . "</span>";
             print "<pre>";
@@ -53,7 +55,7 @@ foreach ($archivos_yaml as $y){
     //$node->body[ $node->language ][0]['value'] = $Coso['body'];
 
     
-    }
+    //}
 }
 
 
