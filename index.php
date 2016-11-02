@@ -10,6 +10,7 @@ $drupal = 1;
 
 require_once "y.php";
 use Drupal\node\Entity\Node;
+use Drupal\file\Entity\File;
 
 
 $archivos_ruta = 'yamls/';
@@ -28,19 +29,20 @@ foreach ($archivos_yaml as $y){
 
     if ($drupal){
         //mandar cosas a Drupal
-        $node = new stdClass();
-        $node->language = LANGUAGE_NONE;
-        $node->type                 = 'producto';
-        $node->title                = $Coso['CODIGO'];
-        $node->field_codigo_interno = $Coso['CODIGO-INTERNO'];
-        $node->field_descripcion    = $Coso['DESCRIPCION'];
-        $node->field_tags           = $Coso['ETIQUETAS'];
-        $node->field_imagen         = $Coso['IMAGEN'];
-        $node->field_linea          = $Coso['LINEA'];
-        $node->field_nombre         = $Coso['NOMBRE'];
-        $node->field_presentacion   = $Coso['PRESENTACION'];
-        $node->field_tipo           = $Coso['TIPO'];
-        node_save($node);
+        $node = Node::create([
+                //'language'             => LANGUAGE_NONE,
+            'type'                 => 'producto',
+            'title'                => $Coso['CODIGO'],
+            'field_codigo_interno' => $Coso['CODIGO-INTERNO'],
+            'field_descripcion'    => $Coso['DESCRIPCION'],
+            'field_tags'           => $Coso['ETIQUETAS'],
+            'field_imagen'         => $Coso['IMAGEN'],
+            'field_linea'          => $Coso['LINEA'],
+            'field_nombre'         => $Coso['NOMBRE'],
+            'field_presentacion'   => $Coso['PRESENTACION'],
+            'field_tipo'           => $Coso['TIPO'],
+        ]);
+        $node->save();
     }
     
     
