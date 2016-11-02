@@ -8,12 +8,14 @@ $debug = 0;
 $drupal = 1;
 
 
-require_once "y.php";
 use Drupal\node\Entity\Node;
 use Drupal\file\Entity\File;
 
+$i = require_once "d8-charger-yaml/y.php";
 
-$archivos_ruta = 'yamls/';
+
+
+$archivos_ruta = 'd8-charger-yaml/yamls/';
 //$archivos_yaml = scandir($archivos_ruta);
 $archivos_yaml = file_scan_directory($archivos_ruta, '/[.*.y.?ml]$/');
 
