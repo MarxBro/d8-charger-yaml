@@ -13,6 +13,7 @@ $drupal = 1;
 
 use Drupal\node\Entity\Node;
 use Drupal\file\Entity\File;
+use Drupal\taxonomy\Entity;
 
 require_once "./d8-charger-yaml/y.php";
 
@@ -54,7 +55,6 @@ foreach ($archivos_yaml as $y){
 }
 
 function taxonomizame_la_nutria($palabra, $vocabulario){
-    use Drupal\taxonomy\Entity;
     $g =implode("-",$palabra);
     if ($debug){
         drush_log(print_r($palabra));
