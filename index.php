@@ -61,7 +61,7 @@ function taxonomizame_la_nutria($palabra, $vocabulario){
         $debug = 1;
         $g = "";//$palabra;
         if(is_array($palabra)){
-            foreach($palabras as $a){
+            foreach($palabra as $a){
                 if (is_array($a)){
                     $g.=implode("-",$a);
                 } else {
