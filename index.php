@@ -63,30 +63,30 @@ function taxonomizame_la_nutria($palabra, $vocabulario){
         if(is_array($palabra)){
             foreach($palabra as $a){
                 if (is_array($a)){
-                    $g.=implode("-",$a);
+                    $g .= implode("-",$a);
                 } else {
                     $g .= "-" . $a;
-                    }
+                }
             }
         } else {
             $g = "-" . $palabra;
         }
         if ($debug){
-            drush_log(print_r($palabra));
-            drush_log(print_r($vocabulario));
+            //drush_log(print_r($palabra));
+            //drush_log(print_r($vocabulario));
             drush_log(print_r($g));
         }
 
-        if ($terms = taxonomy_term_load_multiple_by_name($g,$vocabulario)){
-            $term = reset($terms);
+        //if ($terms = taxonomy_term_load_multiple_by_name($g,$vocabulario)){
+        //$term = reset($terms);
         //} else {
             //$term = Term::create([
                 //'name' => $palabra,
                 //'vid' => $vocabulario,
             //])->save();
-            if($debug){ 
-                drush_log(print $term->id(), 'ok');
-            }
+            //if($debug){ 
+            //drush_log(print $term->id(), 'ok');
+            //}
         }
         //return $term->id();
     }
