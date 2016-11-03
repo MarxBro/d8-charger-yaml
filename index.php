@@ -33,7 +33,7 @@ foreach ($archivos_yaml as $y){
         // Taxonomias
         $f_tags = taxonomizame_la_nutria($Coso[$tt]['ETIQUETAS'], 'tags');
         $f_tipo = taxonomizame_la_nutria($Coso[$tt]['TIPO'], 'tipo');
-        $f_linea = taxonomizame_la_nutria($Coso[$tt]['LINEA'], 'linea');
+        $f_linea = taxonomizame_la_nutria($Coso[$tt]['LINEA'], 'lineas');
 
         $node = Node::create([
             'language'             => 'LANGUAGE_NONE',
@@ -55,10 +55,14 @@ foreach ($archivos_yaml as $y){
 }
 
 function taxonomizame_la_nutria($palabra, $vocabulario){
-    $g =implode("-",$palabra);
     $debug = 1;
+    $g = $palabra;
+    if(is_array($palabra)){
+        $g =implode("-",$palabra);
+    }
     if ($debug){
         drush_log(print_r($palabra));
+        drush_log(print_r($vocabulario));
         drush_log(print_r($g));
     }
 
