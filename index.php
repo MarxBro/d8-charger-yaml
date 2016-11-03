@@ -22,12 +22,18 @@ $archivos_yaml = file_scan_directory($archivos_ruta, '/[.*.y.?ml]$/');
 foreach ($archivos_yaml as $y){
         $Coso = spyc_load_file($y->uri);
         if ($debug){
-            drush_log( $Coso,'ok');
+            drush_log( print_r($Coso) ,'ok');
         }
 
     if ($drupal){
         $t = array_keys($Coso);
         $tt = $t[0];
+
+        // Taxonomias
+        $f_tags = taxonomizame_la_nutria($Coso[$tt]['ETIQUETAS'], 'tags');
+        $f_tipo = taxonomizame_la_nutria($Coso[$tt]['TIPO'], 'tipo');
+        $f_linea = taxonomizame_la_nutria($Coso[$tt]['LINEA'], 'linea');
+
         $node = Node::create([
             'language'             => 'LANGUAGE_NONE',
             'type'                 => 'producto',
@@ -36,15 +42,34 @@ foreach ($archivos_yaml as $y){
             'field_descripcion'    => array('value'=>$Coso[$tt]['DESCRIPCION']),
             'field_nombre'         => array('value'=>$Coso[$tt]['NOMBRE']),
             'field_presentacion'   => array('value'=>$Coso[$tt]['PRESENTACION']),
+            //// ---------------------------------------------
+            //'field_tipo'           => array('term_id'=> $f_tipo),
+            //'field_tags'           => array('term_id'=> $f_tags),
+            //'field_linea'          => array('term_id'=> $f_linea),
             // ---------------------------------------------
-            'field_tipo'           => array('value'=>$Coso[$tt]['TIPO']),
-            'field_tags'           => array('value'=>$Coso[$tt]['ETIQUETAS']),
-            'field_linea'          => array('value'=>$Coso[$tt]['LINEA']),
-            // ---------------------------------------------
-            'field_imagen'         => array('value'=>$Coso[$tt]['IMAGEN']),
+            //'field_imagen'         => array('value'=>$Coso[$tt]['IMAGEN']),
         ]);
         $node->save();
     }
+}
+
+function taxonomizame_la_nutria($palabra, $vocabulario){
+    use Drupal\taxonomy\Entity;
+    $g =implode("-",$palabra);
+    if ($debug){
+        drush_log(print_r($palabra));
+        drush_log(print_r($g));
+    }
+
+    //if ($terms = taxonomy_term_load_multiple_by_name($palabra,$vocabulario)){
+        //$term = reset($terms);
+    //} else {
+        //$term = Term::create([
+            //'name' => $palabra,
+            //'vid' => $vocabulario,
+        //])->save();
+    //}
+    //return $term->id();
 }
 
 
