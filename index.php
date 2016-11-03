@@ -56,6 +56,7 @@ foreach ($archivos_yaml as $y){
 
 function taxonomizame_la_nutria($palabra, $vocabulario){
     $g =implode("-",$palabra);
+    $debug = 1;
     if ($debug){
         drush_log(print_r($palabra));
         drush_log(print_r($g));
