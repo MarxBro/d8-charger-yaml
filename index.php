@@ -76,11 +76,11 @@ function taxonomizame_la_nutria($palabra, $vocabulario){
                 //'name' => $palabra,
                 //'vid' => $vocabulario,
             //])->save();
+            if($debug){ 
+                drush_log(print $term->id(), 'ok');
+            }
         }
         //return $term->id();
-        if($debug){ 
-            drush_log(print $term->id(), 'ok');
-        }
     }
 }
 
