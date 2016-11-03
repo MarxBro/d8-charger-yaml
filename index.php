@@ -59,9 +59,17 @@ function taxonomizame_la_nutria($palabra, $vocabulario){
         //Linea tiene jerarquia
     } else {
         $debug = 1;
-        $g = $palabra;
+        $g = "";//$palabra;
         if(is_array($palabra)){
-            $g =implode("-",$palabra);
+            foreach($palabras as $a){
+                if (is_array($a)){
+                    $g.=implode("-",$a);
+                } else {
+                    $g .= "-" . $a;
+                    }
+            }
+        } else {
+            $g = "-" . $palabra;
         }
         if ($debug){
             drush_log(print_r($palabra));
