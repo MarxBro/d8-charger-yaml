@@ -56,34 +56,31 @@ foreach ($archivos_yaml as $y){
 
 function taxonomizame_la_nutria($palabra, $vocabulario){
     if ($vocabulario == "linea"){
-        
+        //Linea tiene jerarquia
     } else {
-    
-    }
+        $debug = 1;
+        $g = $palabra;
+        if(is_array($palabra)){
+            $g =implode("-",$palabra);
+        }
+        if ($debug){
+            drush_log(print_r($palabra));
+            drush_log(print_r($vocabulario));
+            drush_log(print_r($g));
+        }
 
-    //Linea tiene jerarquia
-    $debug = 1;
-    $g = $palabra;
-    if(is_array($palabra)){
-        $g =implode("-",$palabra);
-    }
-    if ($debug){
-        drush_log(print_r($palabra));
-        drush_log(print_r($vocabulario));
-        drush_log(print_r($g));
-    }
-
-    if ($terms = taxonomy_term_load_multiple_by_name($palabra,$vocabulario)){
-        $term = reset($terms);
-    //} else {
-        //$term = Term::create([
-            //'name' => $palabra,
-            //'vid' => $vocabulario,
-        //])->save();
-    }
-    //return $term->id();
-    if($debug){ 
-        drush_log(print $term->id(), 'ok');
+        if ($terms = taxonomy_term_load_multiple_by_name($palabra,$vocabulario)){
+            $term = reset($terms);
+        //} else {
+            //$term = Term::create([
+                //'name' => $palabra,
+                //'vid' => $vocabulario,
+            //])->save();
+        }
+        //return $term->id();
+        if($debug){ 
+            drush_log(print $term->id(), 'ok');
+        }
     }
 }
 
