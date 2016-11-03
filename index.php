@@ -29,19 +29,19 @@ foreach ($archivos_yaml as $y){
         $t = array_keys($Coso);
         $tt = $t[0];
         $node = Node::create([
-            'language'             => 'LANGUAGE_NONE',
-            'type'                 => 'producto',
-            'title'                => $tt,
-            'field_codigo_interno' => $Coso[$tt]['CODIGO-INTERNO'],
-            'field_descripcion'    => $Coso[$tt]['DESCRIPCION'],
-            'field_nombre'         => $Coso[$tt]['NOMBRE'],
-            'field_presentacion'   => $Coso[$tt]['PRESENTACION'],
+            'language'             => 'LANGUAGE_NONE'),
+            'type'                 => 'producto'),
+            'title'                => $tt),
+            'field_codigo_interno' => array('value'=>$Coso[$tt]['CODIGO-INTERNO']),
+            'field_descripcion'    => array('value'=>$Coso[$tt]['DESCRIPCION']),
+            'field_nombre'         => array('value'=>$Coso[$tt]['NOMBRE']),
+            'field_presentacion'   => array('value'=>$Coso[$tt]['PRESENTACION']),
             // ---------------------------------------------
-            'field_tipo'           => $Coso[$tt]['TIPO'],
-            'field_tags'           => $Coso[$tt]['ETIQUETAS'],
-            'field_linea'          => $Coso[$tt]['LINEA'],
+            'field_tipo'           => array('value'=>$Coso[$tt]['TIPO']),
+            'field_tags'           => array('value'=>$Coso[$tt]['ETIQUETAS']),
+            'field_linea'          => array('value'=>$Coso[$tt]['LINEA']),
             // ---------------------------------------------
-            'field_imagen'         => $Coso[$tt]['IMAGEN'],
+            'field_imagen'         => array('value'=>$Coso[$tt]['IMAGEN']),
         ]);
         $node->save();
     }
