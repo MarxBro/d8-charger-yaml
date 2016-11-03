@@ -69,7 +69,7 @@ function taxonomizame_la_nutria($palabra, $vocabulario){
             drush_log(print_r($g));
         }
 
-        if ($terms = taxonomy_term_load_multiple_by_name($palabra,$vocabulario)){
+        if ($terms = taxonomy_term_load_multiple_by_name($g,$vocabulario)){
             $term = reset($terms);
         //} else {
             //$term = Term::create([
