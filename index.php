@@ -29,9 +29,9 @@ foreach ($archivos_yaml as $y){
         $t = array_keys($Coso);
         $tt = $t[0];
         $node = Node::create([
-            'language'             => 'LANGUAGE_NONE'),
-            'type'                 => 'producto'),
-            'title'                => $tt),
+            'language'             => 'LANGUAGE_NONE',
+            'type'                 => 'producto',
+            'title'                => $tt,
             'field_codigo_interno' => array('value'=>$Coso[$tt]['CODIGO-INTERNO']),
             'field_descripcion'    => array('value'=>$Coso[$tt]['DESCRIPCION']),
             'field_nombre'         => array('value'=>$Coso[$tt]['NOMBRE']),
