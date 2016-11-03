@@ -89,7 +89,7 @@ function taxonomizame_la_nutria($palabra, $vocabulario){
             //}
         }
         //return $term->id();
-    }
+        //}
 }
 
 
