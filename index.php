@@ -53,7 +53,7 @@ foreach ($archivos_yaml as $y){
             //// ---------------------------------------------
             'field_tipo'           => $f_tipo,
             'field_tags'           => $f_tags,
-            //'field_linea'          => array('term_id'=> $f_linea),
+            'field_linea'          => $f_linea,
             // ---------------------------------------------
             //'field_imagen'         => array('value'=>$Coso[$tt]['IMAGEN']),
         ]);
@@ -63,9 +63,9 @@ foreach ($archivos_yaml as $y){
 
 function taxonomizame_la_nutria($palabra, $vocabulario){
     $ids = [];
-    if ($vocabulario == "lineas"){
+    //if ($vocabulario == "lineas"){
         //Linea tiene jerarquia
-    } else {
+        //} else {
         $debug = 1;
         $g = [];//$palabra;
         if(is_array($palabra)){
@@ -97,7 +97,7 @@ function taxonomizame_la_nutria($palabra, $vocabulario){
         if(!empty($ids)){
             return $ids;
         }
-    }
+        //}
 }
 
 //Para el archivo
