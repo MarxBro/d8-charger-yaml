@@ -15,11 +15,13 @@ use Drupal\node\Entity\Node;
 use Drupal\file\Entity\File;
 use Drupal\taxonomy\Entity;
 use Drupal\taxonomy\Entity\Term;
+use Drupal\taxonomy\Entity\File;
 
 require_once "./d8-charger-yaml/y.php";
 
 $archivos_ruta = './d8-charger-yaml/yamls/';
 $archivos_yaml = file_scan_directory($archivos_ruta, '/[.*.y.?ml]$/');
+$archivos_imgs = file_scan_directory($archivos_ruta, '/[.*.jp.?g]$|[.*.png]$|[.*.gif]$/');
 
 foreach ($archivos_yaml as $y){
         $Coso = spyc_load_file($y->uri);
@@ -98,6 +100,21 @@ function taxonomizame_la_nutria($palabra, $vocabulario){
     }
 }
 
-
+//Para el archivo
+/*
+// Create file object from a locally copied file.
+$uri  = file_unmanaged_copy('public://source.jpg', 'public://destination.jpg', FILE_EXISTS_REPLACE);
+$file = File::Create([
+  'uri' => $uri,
+]);
+$file->save();
+ 
+// Load existing node and attach file.
+$node = Node::load(1);
+$node->field_image->setValue([
+  'target_id' => $file->id(),
+]);
+$node->save();
+*/
 ?>
 
