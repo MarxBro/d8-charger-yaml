@@ -83,10 +83,8 @@ function taxonomizame_la_nutria($palabra, $vocabulario){
                         'name' => $tt,
                         'vid' => $vocabulario,
                 ]);
+                $term->save();    
                 array_push($ids, $term->id());
-                if (!$debug){
-                    $term->save();    
-                }
             }
         }
         if ($debug){
