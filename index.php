@@ -45,8 +45,8 @@ foreach ($archivos_yaml as $y){
             'field_nombre'         => array('value'=>$Coso[$tt]['NOMBRE']),
             'field_presentacion'   => array('value'=>$Coso[$tt]['PRESENTACION']),
             //// ---------------------------------------------
-            //'field_tipo'           => array('term_id'=> $f_tipo),
-            //'field_tags'           => array('term_id'=> $f_tags),
+            'field_tipo'           => array('term_id'=> $f_tipo),
+            'field_tags'           => array('term_id'=> $f_tags),
             //'field_linea'          => array('term_id'=> $f_linea),
             // ---------------------------------------------
             //'field_imagen'         => array('value'=>$Coso[$tt]['IMAGEN']),
@@ -85,6 +85,7 @@ function taxonomizame_la_nutria($palabra, $vocabulario){
                 ]);
                 $term->save();    
                 
+                // Encontrar el tid
                 $query = \Drupal::entityQuery('taxonomy_term');
                 $query->condition('vid', $vocabulario);
                 $query->condition('name', $tt);
@@ -96,7 +97,7 @@ function taxonomizame_la_nutria($palabra, $vocabulario){
             //drush_log(print_r($palabra));
             //drush_log(print_r($vocabulario));
             drush_log(print_r($g));
-            drush_log(print_r($id));
+            drush_log(print_r($ids));
         }
     return $ids;
     }
