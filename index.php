@@ -84,7 +84,12 @@ function taxonomizame_la_nutria($palabra, $vocabulario){
                         'vid' => $vocabulario,
                 ]);
                 $term->save();    
-                array_push($ids, $term->id());
+                
+                $query = \Drupal::entityQuery('taxonomy_term');
+                $query->condition('vid', $vocabulario);
+                $query->condition('name', $tt);
+                $tids = $query->execute();
+                array_push($ids, $tids);
             }
         }
         if ($debug){
