@@ -56,6 +56,7 @@ foreach ($archivos_yaml as $y){
 }
 
 function taxonomizame_la_nutria($palabra, $vocabulario){
+    $ids = [];
     if ($vocabulario == "lineas"){
         //Linea tiene jerarquia
     } else {
@@ -74,7 +75,6 @@ function taxonomizame_la_nutria($palabra, $vocabulario){
             $g[] = $palabra;
         }
         
-        $ids = [];
         foreach($g as $tt){
             if ($terms = taxonomy_term_load_multiple_by_name($tt,$vocabulario)){
                 $term = reset($terms);
