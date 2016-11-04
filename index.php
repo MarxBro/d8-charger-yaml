@@ -35,6 +35,10 @@ foreach ($archivos_yaml as $y){
         $f_tags = taxonomizame_la_nutria($Coso[$tt]['ETIQUETAS'], 'tags');
         $f_tipo = taxonomizame_la_nutria($Coso[$tt]['TIPO'], 'tipo');
         $f_linea = taxonomizame_la_nutria($Coso[$tt]['LINEA'], 'lineas');
+        if ($debug){
+            drush_log($f_tags,'ok');    
+            drush_log($f_tipo,'ok');    
+        }
 
         $node = Node::create([
             'language'             => 'LANGUAGE_NONE',
@@ -45,8 +49,8 @@ foreach ($archivos_yaml as $y){
             'field_nombre'         => array('value'=>$Coso[$tt]['NOMBRE']),
             'field_presentacion'   => array('value'=>$Coso[$tt]['PRESENTACION']),
             //// ---------------------------------------------
-            'field_tipo'           => array('target_id'=> $f_tipo),
-            'field_tags'           => array('target_id'=> $f_tags),
+            'field_tipo'           => array('term_id'=> $f_tipo),
+            'field_tags'           => array('term_id'=> $f_tags),
             //'field_linea'          => array('term_id'=> $f_linea),
             // ---------------------------------------------
             //'field_imagen'         => array('value'=>$Coso[$tt]['IMAGEN']),
