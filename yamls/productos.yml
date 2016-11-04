@@ -4,9 +4,7 @@ jc69120:
   IMAGEN: jc69120.png
   CODIGO-INTERNO: jhr5152
   TIPO: Parlante para automovil
-  LINEA: 
-    Roja
-    Woofers
+  LINEA: [Roja,Woofers]
   ETIQUETAS: [triaxial,6x9”,alta potencia]
   DESCRIPCION: | 
    Alta Potencia
