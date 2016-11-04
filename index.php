@@ -32,9 +32,10 @@ foreach ($archivos_yaml as $y){
         $tt = $t[0];
 
         // Taxonomias
+        $f_linea = taxonomizame_la_nutria($Coso[$tt]['LINEA'], 'lineas');
+        
         $f_tags = taxonomizame_la_nutria($Coso[$tt]['ETIQUETAS'], 'tags');
         $f_tipo = taxonomizame_la_nutria($Coso[$tt]['TIPO'], 'tipo');
-        $f_linea = taxonomizame_la_nutria($Coso[$tt]['LINEA'], 'lineas');
         if ($debug){
             drush_log($f_tags,'ok');    
             drush_log($f_tipo,'ok');    
@@ -49,8 +50,8 @@ foreach ($archivos_yaml as $y){
             'field_nombre'         => array('value'=>$Coso[$tt]['NOMBRE']),
             'field_presentacion'   => array('value'=>$Coso[$tt]['PRESENTACION']),
             //// ---------------------------------------------
-            'field_tipo'           => array('term_id'=> $f_tipo),
-            'field_tags'           => array('term_id'=> $f_tags),
+            'field_tipo'           => $f_tipo,
+            'field_tags'           => $f_tags,
             //'field_linea'          => array('term_id'=> $f_linea),
             // ---------------------------------------------
             //'field_imagen'         => array('value'=>$Coso[$tt]['IMAGEN']),
@@ -94,7 +95,7 @@ function taxonomizame_la_nutria($palabra, $vocabulario){
                 //$query->condition('vid', $vocabulario);
                 //$query->condition('name', $tt);
                 //$tids = $query->execute();
-                $ids[] = $term->id();
+                $ids[] = array('target_id' => $term->id());
             }
         }
         if ($debug){
