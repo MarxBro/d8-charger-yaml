@@ -20,14 +20,19 @@ use Drupal\taxonomy\Entity\File;
 require_once "./d8-charger-yaml/y.php";
 
 $archivos_ruta = './d8-charger-yaml/yamls/';
+$archivos_ruta_imgs = './d8-charger-yaml/yamls/';
 $archivos_yaml = file_scan_directory($archivos_ruta, '/[.*.y.?ml]$/');
-$archivos_imgs = file_scan_directory($archivos_ruta, '/[.*.jp.?g]$|[.*.png]$|[.*.gif]$/');
+$archivos_imgs = file_scan_directory($archivos_ruta_imgs, '/[.*.jp.?g]$|[.*.png]$|[.*.gif]$/');
+$d8_public_img_path = \Drupal::service('file_system')->realpath(file_default_scheme() . "://");
+if ($debug){
+    drush_log( print $d8_public_img_path,'ok');
+}
 
 foreach ($archivos_yaml as $y){
         $Coso = spyc_load_file($y->uri);
-        if ($debug){
-            drush_log( print_r($Coso) ,'ok');
-        }
+        //if ($debug){
+            //drush_log( print_r($Coso) ,'ok');
+            //}
 
     if ($drupal){
         $t = array_keys($Coso);
