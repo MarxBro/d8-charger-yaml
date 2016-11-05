@@ -2,12 +2,17 @@
 
 /* -------------------------------------------------------
 Cargador:   
-    carga yamls a drupal 8 mediante la gracia de Spyc.
-
-drush9 -v scr a.php
+    carga yamls a nodos de drupal 8 mediante la gracia 
+    de Spyc.
+    
+    Taxonomiza la cosa un poco y agrega imágenes...
+    
+    Usar así, desde el root de D8:
+        
+        drush9 -v scr carpete/index.php
 
 ------------------------------------------------------- */
-$debug = 1;
+$debug = 0;
 $drupal = 1;
 
 
@@ -70,11 +75,6 @@ foreach ($archivos_yaml as $y){
             // ---------------------------------------------
             'field_imagen'         => array('target_id'=>$filex->id()),
         ]);
-
-
-        //$node->field_image->setValue([
-          //'target_id' => $filex->id(),
-        //]);
         $node->save();
     }
 }
