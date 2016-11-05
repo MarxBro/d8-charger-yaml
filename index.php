@@ -12,10 +12,10 @@ $drupal = 1;
 
 
 use Drupal\node\Entity\Node;
-//use Drupal\file\Entity\File;
+use Drupal\file\Entity\File;
 use Drupal\taxonomy\Entity;
 use Drupal\taxonomy\Entity\Term;
-use Drupal\taxonomy\Entity\File;
+//use Drupal\taxonomy\Entity\File;
 
 require_once "./d8-charger-yaml/y.php";
 
@@ -23,10 +23,6 @@ $archivos_ruta = './d8-charger-yaml/yamls/';
 $archivos_ruta_imgs = './d8-charger-yaml/yamls/';
 $archivos_yaml = file_scan_directory($archivos_ruta, '/[.*.y.?ml]$/');
 $archivos_imgs = file_scan_directory($archivos_ruta_imgs, '/[.*.jp.?g]$|[.*.png]$|[.*.gif]$/');
-$d8_public_img_path = \Drupal::service('file_system')->realpath(file_default_scheme() . "://");
-if ($debug){
-    drush_log( print $d8_public_img_path,'ok');
-}
 
 foreach ($archivos_yaml as $y){
         $Coso = spyc_load_file($y->uri);
@@ -69,15 +65,11 @@ foreach ($archivos_yaml as $y){
 
 function taxonomizame_la_nutria($palabra, $vocabulario){
     $ids = [];
-    //if ($vocabulario == "lineas"){
-        //Linea tiene jerarquia
-        //} else {
         $debug = 1;
         $g = [];//$palabra;
         if(is_array($palabra)){
             foreach($palabra as $a){
                 if (is_array($a)){
-                    //$g .= implode("-",$a);
                     array_push($g,$a);
                 } else {
                     $g[] = $a;
@@ -109,7 +101,6 @@ function taxonomizame_la_nutria($palabra, $vocabulario){
         if(!empty($ids)){
             return $ids;
         }
-        //}
 }
 
 //Para el archivo
