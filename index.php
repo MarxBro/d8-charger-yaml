@@ -40,7 +40,7 @@ foreach ($archivos_yaml as $y){
         if ($debug){
             //drush_log($f_tags,'ok');    
             //drush_log($f_tipo,'ok');    
-            drush_log($f_lineas,'ok');    
+            drush_log($f_linea,'ok');    
         }
 
         $node = Node::create([
@@ -85,7 +85,13 @@ function taxonomizame_la_nutria($palabra, $vocabulario){
         foreach($g as $tt){
             if ($terms = taxonomy_term_load_multiple_by_name($tt,$vocabulario)){
                 $term = reset($terms);
-                array_push($ids,array('target_id' => $term->id()));
+                if ($vocabulario == 'lineas'){
+                    if ($term->id() > 10 ){
+                        array_push($ids,array('target_id' => $term->id()));
+                    }
+                } else{
+                    array_push($ids,array('target_id' => $term->id()));
+                }
             } else {
                 $term = Term::create([
                         'name' => $tt,
