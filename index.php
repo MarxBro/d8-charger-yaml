@@ -37,10 +37,11 @@ foreach ($archivos_yaml as $y){
         $f_linea = taxonomizame_la_nutria($Coso[$tt]['LINEA'], 'lineas'); // Jerarquía
         $f_tags = taxonomizame_la_nutria($Coso[$tt]['ETIQUETAS'], 'tags');
         $f_tipo = taxonomizame_la_nutria($Coso[$tt]['TIPO'], 'tipo');
-        //if ($debug){
+        if ($debug){
             //drush_log($f_tags,'ok');    
             //drush_log($f_tipo,'ok');    
-        //}
+            drush_log($f_lineas,'ok');    
+        }
 
         $node = Node::create([
             'language'             => 'LANGUAGE_NONE',
