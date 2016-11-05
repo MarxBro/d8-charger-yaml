@@ -26,9 +26,9 @@ $archivos_imgs = file_scan_directory($archivos_ruta_imgs, '/[.*.jp.?g]$|[.*.png]
 
 foreach ($archivos_yaml as $y){
         $Coso = spyc_load_file($y->uri);
-        //if ($debug){
-            //drush_log( print_r($Coso) ,'ok');
-            //}
+        if ($debug){
+            drush_log( print_r($archivos_imgs) ,'ok');
+        }
 
     if ($drupal){
         $t = array_keys($Coso);
@@ -118,16 +118,6 @@ function taxonomizame_la_nutria($palabra, $vocabulario){
             return $ids;
         }
 }
-
- 
-// Load existing node and attach file.
-//$node = Node::load(1);
-//$node->field_image->setValue([
-//'target_id' => $filex->id(),
-//]);
-//$node->save();
-
-
 
 ?>
 
