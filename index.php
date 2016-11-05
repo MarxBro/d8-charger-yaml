@@ -39,9 +39,7 @@ foreach ($archivos_yaml as $y){
         $f_tags = taxonomizame_la_nutria($Coso[$tt]['ETIQUETAS'], 'tags');
         $f_tipo = taxonomizame_la_nutria($Coso[$tt]['TIPO'], 'tipo');
         if ($debug){
-            //drush_log($f_tags,'ok');    
-            //drush_log($f_tipo,'ok');    
-            drush_log($f_linea,'ok');    
+            drush_log(print_r($f_linea),'ok');    
         }
 
         $node = Node::create([
