@@ -42,6 +42,19 @@ foreach ($archivos_yaml as $y){
             drush_log(print_r($f_linea),'ok');    
         }
 
+        //Copiar el archivo al public, registrarlo drupalezcamente y agregarlo al nodo
+        $nombre_yaml_img= $Coso[$tt]['IMAGEN'];
+        $desde          = $archivos_ruta_imgs . $nombre_yaml_img;
+        $al_public_papu = 'public://' . $nombre_yaml_img;
+        $uranio         = file_unmanaged_copy($desde, $al_public_papu, FILE_EXISTS_REPLACE);
+
+        $filex = File::Create([
+          'uri' => $uranio,
+        ]);
+        $filex->save();
+        
+        
+        //NODO : Esto es lo mas importante.
         $node = Node::create([
             'language'             => 'LANGUAGE_NONE',
             'type'                 => 'producto',
@@ -55,8 +68,13 @@ foreach ($archivos_yaml as $y){
             'field_tags'           => $f_tags,
             'field_linea'          => $f_linea,
             // ---------------------------------------------
-            //'field_imagen'         => array('value'=>$Coso[$tt]['IMAGEN']),
+            'field_imagen'         => array('target_id'=>$filex->id()),
         ]);
+
+
+        //$node->field_image->setValue([
+          //'target_id' => $filex->id(),
+        //]);
         $node->save();
     }
 }
@@ -101,21 +119,15 @@ function taxonomizame_la_nutria($palabra, $vocabulario){
         }
 }
 
-//Para el archivo
-/*
-// Create file object from a locally copied file.
-$uri  = file_unmanaged_copy('public://source.jpg', 'public://destination.jpg', FILE_EXISTS_REPLACE);
-$file = File::Create([
-  'uri' => $uri,
-]);
-$file->save();
  
 // Load existing node and attach file.
-$node = Node::load(1);
-$node->field_image->setValue([
-  'target_id' => $file->id(),
-]);
-$node->save();
-*/
+//$node = Node::load(1);
+//$node->field_image->setValue([
+//'target_id' => $filex->id(),
+//]);
+//$node->save();
+
+
+
 ?>
 
